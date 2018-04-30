@@ -10,7 +10,7 @@ app.use(parser.json());
 app.use(parser.urlencoded({extended : true}));
 app.use(express.static(__dirname + "/views/public"));
 
-//app.use("/:pollId", pollRoutes);
+app.use("/polls", pollRoutes);
 
 app.get("/", function(req, res) {
     res.sendFile("index.html");
