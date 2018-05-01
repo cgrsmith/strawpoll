@@ -8,7 +8,7 @@ $(document).ready(function() {
         addVote($(this).parent());
     });
 
-    $("#optionList").on("click", ".option", function() {
+    $("#optionList").on("click", "li.enabled", function() {
         addVote($(this));
     })
 
@@ -33,20 +33,23 @@ $(document).ready(function() {
 
 
     function addOption(option, index) {
-        var newOption = $("<li class='option'><span>"+option.title+": </span><span class='votes'>"+option.votes+
+        var newOption = $("<li class='option enabled'><span>"+option.title+": </span><span class='votes'>"+option.votes+
             "</span><span> Votes</span></li>");
         newOption.data("index", index);
         $("#optionList").append(newOption);
     }
 
-    async function addVote(option) {
-        $.ajax({
+    function addVote(option) {
+        //option.removeClass("enabled");
+        let a = $.ajax({
             method : "PUT",
             url : "/polls/" + pollId, 
             data: {optionIndex : option.data("index")}
+        }).then(function() {
+            option.addClass("enabled");
         })
         .catch(function(err) {
-            console.log("ajax error" +err);
+            option.addClass("enabled");
         });
     }
 

@@ -23,7 +23,7 @@ app.use(function(req, res, next) {
 });
 
 app.use(function(err, req, res, next) {
-    return res.status(err.status || 500).json({
+    res.status(err.status || 500).json({
         error : {
             message : err.message || "Oops, something went wrong."
         }
