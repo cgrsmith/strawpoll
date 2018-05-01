@@ -1,0 +1,25 @@
+<head>
+    <title>Strawpoll</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+
+<body>
+    <main poll="<%=poll %>">
+        <div class="loader">
+            Loading Poll
+            <div class="loaderCircle"></div>
+        </div>
+        <div class="content">
+            <h3 id="pollTitle"></h3>
+            <p>Click an option to vote for it</p>
+            <ul id="optionList"></ul>
+        </div>
+    </main>
+
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/app.js"></script>
+</body>

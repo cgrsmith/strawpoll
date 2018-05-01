@@ -14,6 +14,7 @@ const PollSchema = new mongoose.Schema({
         },
         votes : {
             type : Number,
+            required : true,
             default : 0
         }
     }]
