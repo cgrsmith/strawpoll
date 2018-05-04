@@ -8,12 +8,12 @@
         <div class="indexContent">
             <h1>Strawpoll Title</h1>
 
-            <a href="polls/new">Create a Poll!</a>
+            <a href="/polls/new">Create a Poll!</a>
 
             <div>
                 <h3>Recent Polls</h3>
                 <% polls.forEach(function(poll) { %>
-                    <a href="polls/<%= poll._id %>">
+                    <a href="/polls/<%= poll._id %>">
                         <div>
                             <h4><%= poll.title %></h4>
                             <p>Created at <%= poll.createdAt %></p>

@@ -6,7 +6,7 @@ const db = require("../models");
 //All routes prefixed with /polls/api
 router.get("/",  function(req, res, next) {
     db.Poll.find()
-        .sort({createdAt : "asc"})
+        .sort({createdAt : -1})
         .limit(5)
     .then(function(polls) {
         let pollList = polls.map(poll => (
@@ -24,8 +24,6 @@ router.get("/",  function(req, res, next) {
     .catch(function(err) {
         next(err);
     });
-
-    
 });
 
 //Create

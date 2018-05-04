@@ -8,20 +8,20 @@
         <div class="formContent">
             <h3>Add a new Poll</h3>
             <div>
-                <form>
+                <form id="newPollForm">
                     <h4>Poll title</h4>
-                    <input type="text" autofocus>
+                    <input type="text" name="title"autofocus>
                     <h4>Poll options</h4>
-                    <ol>
+                    <ol id="optionList">
                         <li>
-                            <input type="text" autofocus>
+                            <input type="text" name="option" autofocus>
                         </li>
                         <li>
-                            <input type="text" autofocus>
+                            <input type="text" name="option" autofocus>
                         </li>
                     </ol>
-                    <button>Add an Option</button>
-                    <button type="submit">Create Form</button>
+                    <button type="button" id="addOption">Add an Option</button>
+                    <input type="submit" value="Create Poll">
                 </form>
             </div>
         </div>
