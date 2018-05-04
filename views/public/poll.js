@@ -16,7 +16,8 @@ $(document).ready(function() {
         $(".loader").hide();
         $(".content").show();
 
-        $("#pollTitle").text(pollData.title)
+        $("#pollTitle").text(pollData.title);
+        $(".timestamp").text(pollData.createdAt);
         pollData.options.forEach(function(option, index) {
             addOption(option, index);
         });

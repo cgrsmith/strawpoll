@@ -5,7 +5,27 @@ const db = require("../models");
 
 //All routes prefixed with /polls/api
 router.get("/",  function(req, res, next) {
-    res.send("home page");
+    db.Poll.find()
+        .sort({createdAt : "asc"})
+        .limit(5)
+    .then(function(polls) {
+        let pollList = polls.map(poll => (
+            {
+                _id : poll._id,
+                title : poll.title,
+                createdAt : poll.createdAt,
+                votes : poll.options.reduce((acc, cur) => {
+                    return acc + parseInt(cur.votes);
+                }, 0)
+            }
+        ));
+        res.render("polls/landing", {polls : pollList});
+    })
+    .catch(function(err) {
+        next(err);
+    });
+
+    
 });
 
 //Create
@@ -19,18 +39,9 @@ router.post("/",  function(req, res, next) {
     });
 });
 
-//Api for access to raw json
-router.get("/api/:poll_id",  function(req, res, next) {
-    db.Poll.findById(req.params.poll_id)
-    .then(function(foundPoll) {
-        res.json(foundPoll);
-    })
-    .catch(function(err) {
-        next(err);
-    });
+router.get("/new", function(req, res, next) {
+    res.render("polls/new");
 });
-
-
 
 //Show
 router.get("/:poll_id",  function(req, res, next) {
@@ -48,9 +59,16 @@ router.put("/:poll_id",  function(req, res, next) {
     });
 });
 
-//Delete DEFUNCT???
-// router.delete("/:poll_id", async function(req, res, next) {
-
+//Api for access to raw json
+router.get("/api/:poll_id",  function(req, res, next) {
+    db.Poll.findById(req.params.poll_id)
+    .then(function(foundPoll) {
+        res.json(foundPoll);
+    })
+    .catch(function(err) {
+        next(err);
+    });
+});
 
 
 module.exports = router;

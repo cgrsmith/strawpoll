@@ -1,0 +1,35 @@
+<head>
+    <title>Strawpoll</title>
+    <link rel="stylesheet" type="text/css" href="/landing.css">
+</head>
+
+<body>
+    <main>
+        <div class="indexContent">
+            <h1>Strawpoll Title</h1>
+
+            <a href="polls/new">Create a Poll!</a>
+
+            <div>
+                <h3>Recent Polls</h3>
+                <% polls.forEach(function(poll) { %>
+                    <a href="polls/<%= poll._id %>">
+                        <div>
+                            <h4><%= poll.title %></h4>
+                            <p>Created at <%= poll.createdAt %></p>
+                            <p><%= poll.votes%> Votes</p>
+                        </div>
+                    </a>
+                <% }); %>
+            </div>
+        </div>
+
+    </main>
+
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/landing.js"></script>
+</body>
