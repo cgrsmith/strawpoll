@@ -15,7 +15,7 @@ $(document).ready(function() {
     });
 
     $("#addOption").on("click", function() {
-        let newOption = $("<li><input type='text' name='option'><span>X</span></li>");
+        let newOption = $("<li><input type='text' name='option' required><span>X</span></li>");
         $("#optionList").append(newOption);
     });
 

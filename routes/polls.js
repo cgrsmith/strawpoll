@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const moment = require("moment");
 
 const db = require("../models");
 
@@ -13,7 +14,7 @@ router.get("/",  function(req, res, next) {
             {
                 _id : poll._id,
                 title : poll.title,
-                createdAt : poll.createdAt,
+                createdAt : moment(poll.createdAt).fromNow(),
                 votes : poll.options.reduce((acc, cur) => {
                     return acc + parseInt(cur.votes);
                 }, 0)

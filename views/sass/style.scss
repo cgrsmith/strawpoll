@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+$fontColorMain: #222;
+$bgColor: #3b5f81;
+$layerColor: #fcfcfc;
+$minorColor: #CCC;
+
+body {
+    margin: 0;
+    padding: 0;
+    //background-color: #e3e4e6;
+    background: linear-gradient(to right, #cccccc, #ffffff);
+}
+
+
+//All
+* {
+    font-family: Montserrat, sans-serif;
+}
+
+main {
+    max-width: 600px;
+    width: 90%;
+    margin: auto;
+    margin-top: 8rem;
+    box-shadow: 0 0 20px 1px #53545F;
+    background-color: $layerColor;
+}
+
+.mainHeader {
+    //background-color: #2bb558;
+    background: linear-gradient(to right, #1b9945, #2bb558);
+    width: 100%;
+    padding: 2rem 0;
+    text-align: center;
+
+    h1, h3, h4 {
+        font-weight: 1000;
+        color: white;
+    }
+    h1 {
+        margin-bottom: 2rem;
+        letter-spacing: 4px;
+    }
+    h4 {
+        letter-spacing: 2px;
+    }
+
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h4, p {
+    margin: 0.2em 0;
+}
+
+hr {
+    margin: 0;
+    border: 0;
+    height: 1px;
+    background: #CCC;
+}
+
+.button {
+
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background-color: #0543f9;
+    color: $layerColor;
+    width: 160px;
+    cursor: pointer;
+    &:hover {
+        background-color: $layerColor;
+        color: #0543f9;
+    }
+}
+
+//Landing
+.indexContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .pollList {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .singlePoll {
+            padding: 20px 16px;
+
+            
+            cursor: pointer;
+            &:hover {
+                border-left: 8px solid #2bb558;
+                padding-left: 8px;
+            }
+
+            .pollDate {
+                font-size: 0.8rem;
+            }
+        }
+    }
+}
+
+.formContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    padding-bottom: 2rem;
+
+    h4 {
+        margin-top: 2rem;
+    }
+    input[type=text] {
+        width: 400px;
+        display: inline-block;
+    }
+
+    ol {
+        margin-top: 0;
+        counter-reset:li;
+        padding-left: 0;
+        
+        li::before {
+            content: counter(li);
+            counter-increment:li;
+            display: inline-block;
+            margin-left: -1.5rem;
+            margin-right: 1rem;
+            text-align: right;
+            direction: rtl;
+        }
+
+        li {
+            
+            list-style:none; 
+            list-style-position: inside;
+            display: cell;
+            height: 1.2rem;
+            padding: 4px 0;
+            margin: 8px 1rem;
+            text-align: right;
+    
+            .initial {
+                margin-right: 19px;
+            }
+            
+            span {
+                width: 12px;
+                padding-left: 8px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+//Poll
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    padding-bottom: 2rem;
+
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            text-align: left;
+
+            padding: 20px 16px;  
+            cursor: pointer;
+            &:hover {
+                border-left: 8px solid #2bb558;
+                padding-left: 8px;
+            }
+        }
+    }
+}
+
+#chartContainer {
+    width: 100%;
+    height: 500px;
+    margin: auto;
+    z-index: 2;
+}
+
+.option {
+    cursor: pointer;
+}
+
+.enabled {
+    //background-color: #ccc;   
+}
+
+.content {
+    display : none;
+}
+
+.loader {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    text-align: center;
+}
+.loaderCircle {
+    margin: 16px auto;
+    border: 8px solid white; 
+    border-top: 8px solid black; 
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+

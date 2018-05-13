@@ -1,27 +1,33 @@
 <head>
     <title>Strawpoll</title>
-    <link rel="stylesheet" type="text/css" href="/landing.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 
 <body>
     <main>
         <div class="indexContent">
-            <h1>Strawpoll Title</h1>
+            <header class="mainHeader">
+                <h1>STRAWPOLL</h1>
+                <a class="button" href="/polls/new">Create a Poll!</a>
+            </header>
+            
+            <h3>Recent Polls</h3>
+            <div class="pollList">
+                <% polls.forEach(function(poll, index) { %>
+                <a href="/polls/<%= poll._id %>">
+                    <div class="singlePoll">
+                        <h4><%= poll.title %></h4>
+                        <p class="pollDate">Created <%= poll.createdAt %></p>
+                        <p><em><%= poll.votes%> Votes Cast</em></p>
 
-            <a href="/polls/new">Create a Poll!</a>
-
-            <div>
-                <h3>Recent Polls</h3>
-                <% polls.forEach(function(poll) { %>
-                    <a href="/polls/<%= poll._id %>">
-                        <div>
-                            <h4><%= poll.title %></h4>
-                            <p>Created at <%= poll.createdAt %></p>
-                            <p><%= poll.votes%> Votes</p>
-                        </div>
-                    </a>
+                    </div>
+                    <% if(index !== polls.length - 1) {  %>
+                        <hr>
+                    <% }  %>
+                </a>
                 <% }); %>
             </div>
+            
         </div>
 
     </main>

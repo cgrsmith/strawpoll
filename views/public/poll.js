@@ -1,9 +1,10 @@
 $(document).ready(function() {
     const pollId = $("main").attr("poll");
+
+
     $.getJSON("/polls/api/" + pollId)
         .then(showOptions);
 
-    
     $("button").on("click", function() {
         addVote($(this).parent());
     });
@@ -13,13 +14,17 @@ $(document).ready(function() {
     })
 
     function showOptions(pollData) {
+        var date = new Date(pollData.createdAt)
         $(".loader").hide();
         $(".content").show();
 
         $("#pollTitle").text(pollData.title);
-        $(".timestamp").text(pollData.createdAt);
+        $(".timestamp").text(date.toLocaleString());
         pollData.options.forEach(function(option, index) {
             addOption(option, index);
+            if(index !== pollData.length - 1) {
+                $("#optionList").append($("<hr>"));
+            }
         });
 
         var options = $("#optionList").children().children(".votes");
@@ -34,8 +39,8 @@ $(document).ready(function() {
 
 
     function addOption(option, index) {
-        var newOption = $("<li class='option enabled'><span>"+option.title+": </span><span class='votes'>"+option.votes+
-            "</span><span> Votes</span></li>");
+        var newOption = $("<li class='option enabled'><span><strong>"+option.title+": </strong></span><span class='votes'>"
+            +option.votes+"</span><span> Votes</span></li>");
         newOption.data("index", index);
         $("#optionList").append(newOption);
     }
@@ -58,7 +63,28 @@ $(document).ready(function() {
         //console.log(newData);
         options.each(function(index) {
             options[index].textContent = newData.options[index].votes;
-        })
+        });
+
+        drawChart(newData);
     }
+
+    function drawChart(data){
+        var options = {
+            grid: {
+                drawBorder: false, 
+                drawGridlines: false,
+                shadow:false
+            },
+            seriesDefaults: {
+              renderer: jQuery.jqplot.PieRenderer,
+              rendererOptions: { padding: 8, showDataLabels: true }
+            },
+            legend: { show:true, location: 's' }
+        };
+        let chartData = data.options.map(option => [option.title, option.votes]);
+        $.jqplot('chartContainer', [[...chartData]], options);
+        
+    };
+
 });
 

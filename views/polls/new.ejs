@@ -1,27 +1,30 @@
 <head>
     <title>Strawpoll</title>
-    <link rel="stylesheet" type="text/css" href="/new.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 
 <body>
     <main>
-        <div class="formContent">
-            <h3>Add a new Poll</h3>
-            <div>
-                <form id="newPollForm">
+        <div>
+            <header class="mainHeader">
+                <a href="/polls" ><h4>STRAWPOLL</h4></a>
+                <h3>Add a new Poll</h3>
+            </header>
+            <div >
+                <form id="newPollForm" class="formContent">
                     <h4>Poll title</h4>
-                    <input type="text" name="title"autofocus>
+                    <input type="text" name="title" required autofocus>
                     <h4>Poll options</h4>
+                    <button class="button" type="button" id="addOption">Add an Option</button>
                     <ol id="optionList">
                         <li>
-                            <input type="text" name="option" autofocus>
+                            <input type="text" name="option" class="initial" required>
                         </li>
                         <li>
-                            <input type="text" name="option" autofocus>
+                            <input type="text" name="option" class="initial" required>
                         </li>
                     </ol>
-                    <button type="button" id="addOption">Add an Option</button>
-                    <input type="submit" value="Create Poll">
+                    <input class="button" type="submit" value="Create Poll">
                 </form>
             </div>
         </div>

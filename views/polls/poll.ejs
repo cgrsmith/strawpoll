@@ -1,10 +1,15 @@
 <head>
     <title>Strawpoll</title>
-    <link rel="stylesheet" type="text/css" href="/poll.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.9/jquery.jqplot.min.css">
 </head>
 
 <body>
+
     <main poll="<%=poll %>">
+        <header class="mainHeader">
+            <a href="/polls" ><h4>STRAWPOLL</h4></a>
+        </header>
         <div class="loader">
             Loading Poll
             <div class="loaderCircle"></div>
@@ -14,6 +19,8 @@
             <p>Created at <span class="timestamp"></span></p>
             <p>Click an option to vote for it</p>
             <ul id="optionList"></ul>
+
+            <div id="chartContainer"></div> 
         </div>
     </main>
 
@@ -22,5 +29,7 @@
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.9/jquery.jqplot.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.9/plugins/jqplot.pieRenderer.min.js"></script>
     <script type="text/javascript" src="/poll.js"></script>
 </body>
